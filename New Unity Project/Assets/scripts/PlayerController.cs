@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,15 +14,19 @@ public class PlayerController : MonoBehaviour
     public Transform character;
     public LayerMask groundLayer;
 
+    public TextMeshProUGUI pointsText;
+
     public float speedVelocity = 10;
     public float jumpVelocity = 5;
     public float gravity = -15;
     public float rotationSpeed = 0.03f;
 
+    public static int points;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        points = 0;
     }
 
     // Update is called once per frame
@@ -55,6 +60,11 @@ public class PlayerController : MonoBehaviour
         }
 
         controller.Move(direction * Time.deltaTime);
+
+
+        //Update number of points
+        pointsText.text = "Points: " + points;
+
     }
 
     public Vector3 getPlayerDirection()
