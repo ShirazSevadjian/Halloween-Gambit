@@ -20,9 +20,17 @@ public class Projectile : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter(Collider other)
     {
-        //Instantiate(impactEffect, transform.position, Quaternion.identiy);
-        Destroy(gameObject);
+        if (other.gameObject.tag == "Boundry")
+        {
+            Destroy(gameObject);
+        }
+        else if(other.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+            //Instantiate(impactEffect, transform.position, Quaternion.identiy);
+        }
+
     }
 }

@@ -1,3 +1,13 @@
 Ressources used:
 
+--- Fireball projectile ---
 https://opengameart.org/content/fireball-effect
+
+--- Main Character ---
+https://assetstore.unity.com/packages/3d/characters/toony-tiny-ww1-soldiers-demo-115694
+
+--- Ghoul Zombie ---
+https://assetstore.unity.com/packages/3d/characters/ghoul-zombie-114531
+
+--- Halloween Assets ---
+https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125
