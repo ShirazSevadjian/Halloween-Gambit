@@ -7,9 +7,9 @@ public class Enemy : MonoBehaviour
     private string currentState = "IdleState";
     private Transform target;
     public float chaseRange = 5;
-    public float walkRange = 10;
+    //public float walkRange = 10;
     public Animator animator;
-    public float walkSpeed = 4;
+    //public float walkSpeed = 4;
     public float runSpeed = 8;
 
     // Start is called before the first frame update
@@ -25,12 +25,12 @@ public class Enemy : MonoBehaviour
 
         if(currentState == "IdleState")
         {
-            if (distanceBetweenTarget < walkRange)
+            if (distanceBetweenTarget < chaseRange)
             {
-                currentState = "WalkState";
+                currentState = "RunState";
             }
         }
-        else if(currentState == "WalkState")
+        /*else if(currentState == "WalkState")
         {
             animator.SetTrigger("Walk");
 
@@ -38,20 +38,20 @@ public class Enemy : MonoBehaviour
             if (target.position.x > transform.position.x)
             {
                 transform.Translate(-transform.right * walkSpeed * Time.deltaTime);
-                //transform.rotation = Quaternion.Euler(0, 180, 0);
+                transform.rotation = Quaternion.Euler(0, -270, 0);
             }
             //Move Right
             else
-            {
+            { 
                 transform.Translate(transform.right * walkSpeed * Time.deltaTime);
-                transform.rotation = Quaternion.Euler(0, -180, 0);
+                transform.rotation = Quaternion.Euler(0, -90, 0);
             }
 
             if(distanceBetweenTarget < chaseRange)
             {
                 currentState = "RunState";
             }
-        }
+        }*/
         else if (currentState == "RunState")
         {
             animator.SetTrigger("Chase");
@@ -60,13 +60,13 @@ public class Enemy : MonoBehaviour
             if(target.position.x > transform.position.x)
             {
                 transform.Translate(-transform.right * runSpeed * Time.deltaTime);
-                //transform.rotation = Quaternion.identity;
+                transform.rotation = Quaternion.Euler(0, -270, 0);
             }
             //Move Right
             else
             {
                 transform.Translate(transform.right * runSpeed * Time.deltaTime);
-                //transform.rotation = Quaternion.Euler(0, 180, 0);
+                transform.rotation = Quaternion.Euler(0, -90, 0);
             }
 
             if(distanceBetweenTarget > chaseRange)
