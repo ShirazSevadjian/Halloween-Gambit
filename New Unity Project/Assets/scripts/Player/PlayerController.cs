@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     public Slider healthBar;
 
     public TextMeshProUGUI pointsText;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
     public float speedVelocity = 10;
     public float jumpVelocity = 5;
@@ -24,9 +27,12 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 0.03f;
 
     public static int points;
-    public static int currentHealth = 100;
+    public static int currentHealth = 3;
+    public static int numberOfHearts = 3;
 
     public bool gameOver;
+
+    private bool isSliding;
 
     // Start is called before the first frame update
     void Start()
@@ -35,13 +41,22 @@ public class PlayerController : MonoBehaviour
         gameOver = false;
     }
 
+    private void Awake()
+    {
+        currentHealth = 3;
+        numberOfHearts = 3;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        isSliding = false;
+        animator.SetBool("isSliding", isSliding);
+
         // Horizontal Movement
         float horizontalInput = Input.GetAxis("Horizontal");
         setPlayerDirection(horizontalInput * speedVelocity);
-        
+
 
         // Check if the player is grounded
         bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.15f, groundLayer);
@@ -54,6 +69,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             direction.y = jumpVelocity;
+        }
+
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        {
+            isSliding = true;
+            animator.SetBool("isSliding", isSliding);
         }
 
         // Apply gravity
@@ -74,10 +95,45 @@ public class PlayerController : MonoBehaviour
         //Set the health
         healthBar.value = currentHealth;
 
-        //Player dies TODO
-        if(currentHealth < 0)
+        foreach(Image img in hearts)
         {
-            gameOver = true;
+            img.sprite = emptyHeart;
+        }
+
+        for(int i = 0; i < numberOfHearts; i++)
+        {
+            hearts[i].sprite = fullHeart;
+        }
+
+        //Player Gets hit 3 times, then lose 1 heart
+        if(currentHealth <= 0)
+        {
+            if(numberOfHearts != 0)
+            {
+                if(numberOfHearts == 1)
+                {
+                    numberOfHearts--;
+                    currentHealth = 0;
+                }
+                else
+                {
+                    numberOfHearts--;
+                    currentHealth = 3;
+                }
+            }
+            else
+            {
+                gameOver = true;
+                numberOfHearts = 0;
+                currentHealth = 0;
+            }            
+        }
+
+
+        //TODO: If the player loses all the lives, trigger gameover menu
+        if (gameOver)
+        {
+            
         }
     }
 

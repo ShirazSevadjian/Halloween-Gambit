@@ -14,3 +14,10 @@ https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery
 
 --- Ghost Asset ---
 https://assetstore.unity.com/packages/3d/animations/balloon-ghost-with-breakable-parts-209499
+
+--- Heart Sprites ---
+https://github.com/Chaker-Gamra/2D-Platformer-Game/blob/master/Assets/Sprites/pixel-heart-Full.png
+https://github.com/Chaker-Gamra/2D-Platformer-Game/blob/master/Assets/Sprites/pixel-heart-Empty.png
+
+--- Witch Asset ---
+https://free3d.com/3d-model/witch-v1--643720.html

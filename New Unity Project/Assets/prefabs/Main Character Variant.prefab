@@ -69,7 +69,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100166, guid: 3d06f9e13e57b434dbbb7e7b64c158e1, type: 3}
       propertyPath: m_Name
-      value: Main Character
+      value: Main Character Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100166, guid: 3d06f9e13e57b434dbbb7e7b64c158e1, type: 3}
       propertyPath: m_TagString
@@ -97,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400166, guid: 3d06f9e13e57b434dbbb7e7b64c158e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.17
       objectReference: {fileID: 0}
     - target: {fileID: 400166, guid: 3d06f9e13e57b434dbbb7e7b64c158e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -242,6 +242,9 @@ MonoBehaviour:
     m_Bits: 64
   healthBar: {fileID: 0}
   pointsText: {fileID: 0}
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
   speedVelocity: 8
   jumpVelocity: 10
   gravity: -15

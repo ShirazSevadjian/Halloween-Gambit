@@ -19,6 +19,14 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1057928971024032657, guid: 7abd4ff7268334b448b1138d6bef3d5e, type: 3}
+      propertyPath: m_Name
+      value: Ghoul Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057928971024032660, guid: 7abd4ff7268334b448b1138d6bef3d5e, type: 3}
+      propertyPath: impactEffect
+      value: 
+      objectReference: {fileID: 8443315704496310910, guid: 6ef35fa36e3a65043b2d800600204bdd, type: 3}
     - target: {fileID: 1443247619606403763, guid: 7abd4ff7268334b448b1138d6bef3d5e, type: 3}
       propertyPath: m_Name
       value: Ghoul

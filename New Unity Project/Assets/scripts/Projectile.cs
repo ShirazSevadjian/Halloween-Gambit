@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
     public GameObject ghost;
     private bool spawnGhost;
     private GameObject player;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -29,19 +28,14 @@ public class Projectile : MonoBehaviour
             spawnGhost = false;
             Destroy(gameObject);
         }
+
     }
 
     void OnTriggerEnter(Collider other)
     {
+        int hitCounter = 0;
         if(other.gameObject.tag != "Player")
-        {
-            if(other.gameObject.tag != "Enemy")
-            {
-                spawnGhost = true;
-                PlayerController.currentHealth -= 33;
-            }
-
-
+        { 
             if (other.gameObject.tag == "Enemy")
             {
                 //Add random points between 1-3
@@ -49,9 +43,19 @@ public class Projectile : MonoBehaviour
                 //Destroy the projectile
                 Destroy(gameObject);
                 //Instantiate explosion effect
-                Instantiate(impactEffect, transform.position, Quaternion.identity);
+                Instantiate(impactEffect, transform.position, Quaternion.identity);  
             }
-            
+            else if(other.gameObject.tag == "Witch")
+            {
+                Instantiate(impactEffect, transform.position, Quaternion.identity);
+                SpawnWitch.hitCounter += 1;
+            }
+            else
+            {
+                spawnGhost = true;
+                PlayerController.currentHealth--;
+            }
+
         }
 
     }
