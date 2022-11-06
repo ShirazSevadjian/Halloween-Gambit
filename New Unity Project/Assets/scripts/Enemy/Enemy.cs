@@ -11,6 +11,11 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     //public float walkSpeed = 4;
     public float runSpeed = 8;
+    public float walkSpeed;
+    private bool isWalking = false;
+    private Vector3 direction = Vector3.zero;
+    private Vector3 destination;
+    public float patrolDistance = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +34,26 @@ public class Enemy : MonoBehaviour
             {
                 currentState = "RunState";
             }
+            else
+            {
+                if (!isWalking)
+                {
+                    StartCoroutine(changeDirection());
+                }
+
+                destination = transform.position + direction * patrolDistance;
+                //transform.position += direction * walkSpeed * Time.deltaTime;
+                if (transform.position.x > destination.x)
+                {
+                    transform.rotation = Quaternion.Euler(0, -90, 0);
+                }
+                else if (transform.position.x < destination.x)
+                {
+                    transform.rotation = Quaternion.Euler(0, -270, 0);
+                }
+                transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime);
+            }
+
         }
         /*else if(currentState == "WalkState")
         {
@@ -71,9 +96,56 @@ public class Enemy : MonoBehaviour
 
             if(distanceBetweenTarget > chaseRange)
             {
-                Debug.Log("Inside condition");
-                currentState = "WalkState";
+                currentState = "IdleState";
             }
         }
+
+    }
+
+
+    //Check if the enemy got hit by a bullet
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "PlayerProjectile")
+        {
+            StartCoroutine(EnemyDeath());
+        }
+    }
+
+
+    IEnumerator EnemyDeath()
+    {
+        currentState = "Die";
+        animator.SetTrigger("Die");
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
+    }
+
+    IEnumerator changeDirection()
+    {
+        if (direction.x == 0)
+        {
+            animator.SetTrigger("Idle");
+        }
+        else
+        {
+            animator.SetTrigger("Walk");
+        }
+
+        isWalking = true;
+        yield return new WaitForSeconds(2);
+        direction.x = Random.Range(-1, 2);
+        isWalking = false;
+
+        if (direction.x == 0)
+        {
+            animator.SetTrigger("Idle");
+        }
+        else
+        {
+            animator.SetTrigger("Walk");
+        }
+        //yield return new WaitForSeconds(10);
+        //animator.SetTrigger("Idle");
     }
 }

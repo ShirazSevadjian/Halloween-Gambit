@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public Transform character;
     public LayerMask groundLayer;
+    public Slider healthBar;
 
     public TextMeshProUGUI pointsText;
 
@@ -22,11 +24,15 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 0.03f;
 
     public static int points;
+    public static int currentHealth = 100;
+
+    public bool gameOver;
 
     // Start is called before the first frame update
     void Start()
     {
         points = 0;
+        gameOver = false;
     }
 
     // Update is called once per frame
@@ -65,6 +71,14 @@ public class PlayerController : MonoBehaviour
         //Update number of points
         pointsText.text = "Points: " + points;
 
+        //Set the health
+        healthBar.value = currentHealth;
+
+        //Player dies TODO
+        if(currentHealth < 0)
+        {
+            gameOver = true;
+        }
     }
 
     public Vector3 getPlayerDirection()

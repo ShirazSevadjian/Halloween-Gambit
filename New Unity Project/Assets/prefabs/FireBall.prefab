@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7153904099589266843}
   m_Layer: 7
   m_Name: FireBall
-  m_TagString: Untagged
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 18
-  impactEffect: {fileID: 0}
+  impactEffect: {fileID: 7226583673155636401, guid: a2ab56839e1c9504ea9d141e95d0b16b, type: 3}
+  ghost: {fileID: 277309399704680814, guid: fa5729787dd672c49bcea8352ab41d58, type: 3}
 --- !u!212 &-7070703099565844859
 SpriteRenderer:
   m_ObjectHideFlags: 0

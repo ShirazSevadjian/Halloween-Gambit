@@ -11,3 +11,6 @@ https://assetstore.unity.com/packages/3d/characters/ghoul-zombie-114531
 
 --- Halloween Assets ---
 https://assetstore.unity.com/packages/3d/environments/fantasy/halloween-cemetery-set-19125
+
+--- Ghost Asset ---
+https://assetstore.unity.com/packages/3d/animations/balloon-ghost-with-breakable-parts-209499
