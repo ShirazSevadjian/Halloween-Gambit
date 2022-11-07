@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -133,7 +134,7 @@ public class PlayerController : MonoBehaviour
         //TODO: If the player loses all the lives, trigger gameover menu
         if (gameOver)
         {
-            
+            SceneManager.LoadScene("Game Over");
         }
     }
 

@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - PlayerProjectile
   - Witch
+  - Boss1
+  - Player2
   layers:
   - Default
   - TransparentFX

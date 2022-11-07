@@ -33,24 +33,35 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        int hitCounter = 0;
         if(other.gameObject.tag != "Player")
-        { 
-            if (other.gameObject.tag == "Enemy")
+        {
+            if(other.gameObject.tag == "Boss1")
             {
-                //Add random points between 1-3
-                PlayerController.points += Random.Range(1, 3);
-                //Destroy the projectile
+                Instantiate(impactEffect, transform.position, Quaternion.identity);
+                SpawnBoss1.hitCounter += 1;
                 Destroy(gameObject);
-                //Instantiate explosion effect
-                Instantiate(impactEffect, transform.position, Quaternion.identity);  
             }
-            else if(other.gameObject.tag == "Witch")
+            else 
+            {
+                if (other.gameObject.tag == "Enemy")
+                {
+                    //Add random points between 1-3
+                    PlayerController.points += Random.Range(1, 3);
+                    //Destroy the projectile
+                    Destroy(gameObject);
+                    //Instantiate explosion effect
+                    Instantiate(impactEffect, transform.position, Quaternion.identity);
+                }
+               
+            }
+            if(other.gameObject.tag == "Witch")
             {
                 Instantiate(impactEffect, transform.position, Quaternion.identity);
                 SpawnWitch.hitCounter += 1;
+                Destroy(gameObject);
             }
-            else
+            
+            if(other.gameObject.tag != "Enemy" && other.gameObject.tag != "Witch" && other.gameObject.tag != "Boss1")
             {
                 spawnGhost = true;
                 PlayerController.currentHealth--;

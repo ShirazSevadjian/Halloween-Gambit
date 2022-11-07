@@ -138,14 +138,31 @@ public class Enemy : MonoBehaviour
     //Check if the enemy got hit by a bullet
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "PlayerProjectile")
+
+        if (other.gameObject.tag == "PlayerProjectile")
         {
-            StartCoroutine(EnemyDeath());
+            if (this.tag == "Boss1")
+            {
+                if (SpawnBoss1.isDead)
+                {
+                    StartCoroutine(EnemyDeath());
+                }
+            }
+            else
+            {
+                StartCoroutine(EnemyDeath());
+            }
+
+
         }
-        else if(other.gameObject.tag == "Player")
+        else if (other.gameObject.tag == "Player")
         {
             PlayerController.currentHealth--;
             //Instantiate(impactEffect, transform.position, Quaternion.identity);
+        }
+        else if(other.gameObject.tag == "Player2")
+        {
+            SecondPlayerController.currentHealth--;
         }
     }
 
@@ -154,7 +171,7 @@ public class Enemy : MonoBehaviour
     {
         currentState = "Die";
         animator.SetTrigger("Die");
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         Destroy(gameObject);
     }
 

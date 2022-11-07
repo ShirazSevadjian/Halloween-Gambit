@@ -11,6 +11,7 @@ public class SpawnBoss1 : MonoBehaviour
     private GameObject bossInstance;
     public static int hitCounter = 0;
     public int spawnAfterTime = 60;
+    public static bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,13 @@ public class SpawnBoss1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (hitCounter == 20)
+        {
+            PlayerController.points += 100;
+            //Destroy(bossInstance);
+            hitCounter = 0;
+            isDead = true;
+        }
     }
 
     IEnumerator Spawn()

@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public Transform firePosition;
     public Projectile projectile;
+    public int cooldown = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,13 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(projectile, firePosition.position, firePosition.rotation);
+            StartCoroutine(Shoot());
         }
+    }
+
+    IEnumerator Shoot()
+    {
+        Instantiate(projectile, firePosition.position, firePosition.rotation);
+        yield return new WaitForSeconds(cooldown);
     }
 }
