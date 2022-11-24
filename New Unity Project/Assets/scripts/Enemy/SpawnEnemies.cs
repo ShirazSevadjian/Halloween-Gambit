@@ -26,7 +26,7 @@ public class SpawnEnemies : MonoBehaviour
         
     }
 
-    private IEnumerator Spawn()
+    public IEnumerator Spawn()
     {
         for(int i = 0; i < enemyCount; i++)
         {
@@ -38,8 +38,15 @@ public class SpawnEnemies : MonoBehaviour
         }
 
         yield return new WaitForSeconds(enemyTimeout);
-        foreach(GameObject spawnedObject in enemyArray){
+        DestroyEnemies();
+    }
+
+    public void DestroyEnemies()
+    {
+        foreach (GameObject spawnedObject in enemyArray)
+        {
             Destroy(spawnedObject);
         }
     }
+
 }

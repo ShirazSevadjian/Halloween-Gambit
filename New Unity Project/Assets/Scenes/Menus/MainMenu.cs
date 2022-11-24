@@ -19,14 +19,35 @@ public class MainMenu : MonoBehaviour
     }
 
 
-    public void PlayLevel1()
+    public void Level1Player1()
     {
         SceneManager.LoadScene("MainScene");
     }
 
-    public void PlayLevel2()
+    public void Level1Player2()
     {
-        SceneManager.LoadScene("Level 2");
+        SceneManager.LoadScene("MainScene2Player");
     }
 
+    public void Level2Player1()
+    {
+        SceneManager.LoadScene("Level2");
+    }
+    public void Level2Player2()
+    {
+        SceneManager.LoadScene("Level2Player2");
+    }
+
+
+    public void Quit()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
+    }
+
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }

@@ -6,7 +6,7 @@ public class SpawnWitch : MonoBehaviour
 {
 
     public GameObject witch;
-    public float witchSpeed = 10;
+    public float witchSpeed = 1;
     public int timeOnScreen = 20;
     public int spawnTimes = 2;
     public float spawnHeight = 4;
@@ -26,14 +26,14 @@ public class SpawnWitch : MonoBehaviour
     {
         if(witchInstance != null)
         {
-            if (witchInstance.transform.position.x >= 0)
+            if (x_position >= 0)
             {
-                witchInstance.transform.position += new Vector3(1f * -0.05f, Random.Range(-0.05f, 0.05f), 0);
+                witchInstance.transform.position += new Vector3(witchSpeed * -0.01f, Random.Range(-0.1f, 0.1f), 0);
                 
             }
             else
             {
-                witchInstance.transform.position += new Vector3(1f * 0.05f, Random.Range(-0.05f, 0.05f), 0);
+                witchInstance.transform.position += new Vector3(witchSpeed * 0.01f, Random.Range(-0.1f, 0.1f), 0);
                 witchInstance.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
         }

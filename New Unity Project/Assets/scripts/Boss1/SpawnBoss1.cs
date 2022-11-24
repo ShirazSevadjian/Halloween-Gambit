@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnBoss1 : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class SpawnBoss1 : MonoBehaviour
     public static int hitCounter = 0;
     public int spawnAfterTime = 60;
     public static bool isDead = false;
+    public float hitsToKill = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +24,13 @@ public class SpawnBoss1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hitCounter == 20)
+        if (hitCounter == hitsToKill)
         {
             PlayerController.points += 100;
             //Destroy(bossInstance);
             hitCounter = 0;
             isDead = true;
+            SceneManager.LoadScene("Level Complete");
         }
     }
 

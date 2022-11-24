@@ -171,7 +171,7 @@ public class Enemy : MonoBehaviour
     {
         currentState = "Die";
         animator.SetTrigger("Die");
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1.5f);
         Destroy(gameObject);
     }
 

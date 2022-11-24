@@ -31,9 +31,10 @@ public class PlayerController : MonoBehaviour
     public static int currentHealth = 3;
     public static int numberOfHearts = 3;
 
-    public bool gameOver;
+    public static bool gameOver;
 
     private bool isSliding;
+    public GameObject gameOverObject;
 
     // Start is called before the first frame update
     void Start()
@@ -131,11 +132,21 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        //TODO: If the player loses all the lives, trigger gameover menu
         if (gameOver)
         {
             SceneManager.LoadScene("Game Over");
+            ///Time.timeScale = 0;
+            //gameOverObject.SetActive(true);
         }
+
+    }
+
+    public void continueGame()
+    {
+        Time.timeScale = 1;
+        gameOverObject.SetActive(false);
+        PlayerController.currentHealth = 3;
+        PlayerController.numberOfHearts = 0;
     }
 
     public Vector3 getPlayerDirection()
