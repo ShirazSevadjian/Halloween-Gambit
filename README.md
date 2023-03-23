@@ -7,3 +7,7 @@ Halloween Gambit is a 2.5D shooter game, created using Unity. It contains multip
 ## Goal
 
 The goal of the game is to defeat the boss and move on to the next levels to beat the game.
+
+## Screenshot
+
+![alt text](https://github.com/ShirazSevadjian/Halloween-Gambit/blob/main/Screenshots/Screenshot1.png)
